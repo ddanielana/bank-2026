@@ -33,5 +33,10 @@ namespace Banque
 
             Balance += amount;
         }
+
+        public double GetBalance()
+        {
+            return Balance;
+        }
     }
 }
