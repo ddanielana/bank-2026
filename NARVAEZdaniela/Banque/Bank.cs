@@ -22,5 +22,18 @@ namespace Banque
             }
             Accounts.Remove(number);
         }
+
+        public double TotalBalance(Person owner)
+        {
+            double totalBalance = 0;
+            foreach (var account in Accounts.Values)
+            {
+                if (account.Owner == owner)
+                {
+                    totalBalance += account.GetBalance();
+                }
+            }
+            return totalBalance;
+        }
     }
 }
