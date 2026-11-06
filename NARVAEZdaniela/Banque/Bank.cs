@@ -2,10 +2,10 @@ namespace Banque
 {
     public class Bank
     {
-        public Dictionary<string, CurrentAccount> Accounts { get; private set; }= new Dictionary<string, CurrentAccount>();
+        public Dictionary<string, Account> Accounts { get; private set; }= new Dictionary<string, Account>();
         public string Name { get; set; } = string.Empty;
 
-        public void AddAccount(CurrentAccount account)
+        public void AddAccount(Account account)
         {
             if (Accounts.ContainsKey(account.Number))
             {
