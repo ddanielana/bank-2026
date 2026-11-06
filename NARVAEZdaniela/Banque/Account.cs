@@ -22,8 +22,7 @@ namespace Banque
             {
                 throw new Exception("Le montant doit être positif");
             }
-
-            else Balance -= amount;
+            Balance -= amount;
         }
 
         public double GetBalance()
@@ -31,8 +30,12 @@ namespace Banque
             return Balance;
         }
 
-         protected abstract double CalculInterets(); 
+        protected abstract double CalculInterets();
+
+        public void ApplyInterest()
+        {
+            Balance += CalculInterets();
+        }
     }
 }
 
-    
