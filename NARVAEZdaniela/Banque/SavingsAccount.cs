@@ -1,38 +1,19 @@
 namespace Banque
 {
-    public class SavingsAccount
+    public class SavingsAccount : Account
     {
-        public string Number { get; set; } = string.Empty;
-        public double Balance { get; private set; }
         public DateTime DateLastWithdraw { get; set; }
-        public Person Owner { get; set; } = new Person();
-
-        public void Withdraw(double amount)       
+    
+        public override void Withdraw(double amount)       
         {
-            if (amount <= 0)
-            {
-                throw new Exception("Le montant doit être positif");
-            }
-
-            if (Balance >= amount)
-            {
-                Balance -= amount;
-                DateLastWithdraw = DateTime.Now;
-            }
-            else
+            if (amount > Balance)
             {
                 throw new Exception("Fonds insuffisants");
             }
+            base.Withdraw(amount);
+
+            DateLastWithdraw = DateTime.Now;
         }
 
-        public void Deposit(double amount)
-        {
-            if (amount <= 0)
-            {
-                throw new Exception("Le montant doit être positif");
-            }
-
-            Balance += amount;
-        }
     }
 }
