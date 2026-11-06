@@ -30,6 +30,8 @@ namespace Banque
         {
             return Balance;
         }
+
+         protected abstract double CalculInterets(); 
     }
 }
 

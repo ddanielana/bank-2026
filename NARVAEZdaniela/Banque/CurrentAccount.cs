@@ -12,5 +12,17 @@ namespace Banque
             }
             base.Withdraw(amount);
         }
+
+        protected override double CalculInterets()
+        {
+            if (Balance > 0)
+            {
+                return Balance * 0.03; // 3% d'intérêt pour les soldes positifs
+            }
+            else
+            {
+                return Balance * 0.0975; // 9.75% d'intérêt pour les soldes négatifs
+            }
+        }
     }
 }
