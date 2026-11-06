@@ -1,6 +1,6 @@
 namespace Banque
 {
-    public class Account
+    public abstract class Account
     {
         public string Number { get; set; } = string.Empty;
         public double Balance { get; private set; }
