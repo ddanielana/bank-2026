@@ -4,6 +4,10 @@ namespace Banque
     {
         public double CreditLine { get; set; }
 
+        public CurrentAccount(string number, Person person) : base(number, person) { }
+
+        public CurrentAccount(string number, Person person, double initialBalance) : base (number, person, initialBalance) { }
+
         public override void Withdraw(double amount)         //retirer de l'argent
         {   
             if (Balance + CreditLine < amount)

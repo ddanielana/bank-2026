@@ -2,9 +2,20 @@ namespace Banque
 {
     public abstract class Account : IBankAccount
     {
-        public string Number { get; set; } = string.Empty;
+        public string Number { get; private set; } = string.Empty;
         public double Balance { get; private set; }
-        public Person Owner { get; set; } = new Person();
+        public Person Owner { get; private set; } = new Person();
+
+        public Account(string number, Person owner)
+        {
+            Number = number;
+            Owner = owner;
+        }
+
+        public Account(string number, Person owner, double initialBalance) : this(number, owner)
+        {
+            Balance = initialBalance;
+        }
 
         public virtual void Deposit(double amount)
         {
