@@ -4,7 +4,7 @@ namespace Banque
     {
         public string Number { get; private set; } = string.Empty;
         public double Balance { get; private set; }
-        public Person Owner { get; private set; } = new Person();
+        public Person Owner { get; private set; } 
 
         public Account(string number, Person owner)
         {

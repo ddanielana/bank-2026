@@ -5,39 +5,21 @@ Bank bank = new Bank
     Name = "BelIng"
 };
 
-Person person1 = new Person
-{
-    FirstName = "Deissy",
-    LastName = "Narvaez",
-    BirthDate = new DateTime(1995, 10, 29)
-};
+Person person1 = new Person("Deissy", "Narvaez", new DateTime(1995, 10, 29)); 
 
-Person person2 = new Person
-{
-    FirstName = "Daniela",
-    LastName = "Pesantez",
-    BirthDate = new DateTime(2000, 10, 31)
-};
+Person person2 = new Person("Daniela", "Pesantez", new DateTime(2000, 10, 31));
 
-IBankAccount cAccount1 = new CurrentAccount
+IBankAccount cAccount1 = new CurrentAccount("B12345", person1)
 {
-    Number = "B12345",
-    Owner = person1,
     CreditLine = 500,
 };
 
-IBankAccount cAccount2 = new CurrentAccount
+IBankAccount cAccount2 = new CurrentAccount("B67890", person2)
 {
-    Number = "B67890",
-    Owner = person2,
     CreditLine = 1000
 };
 
-IBankAccount sAccount1 = new SavingsAccount
-{
-    Number = "B00125",
-    Owner = person1,
-};
+IBankAccount sAccount1 = new SavingsAccount("B00125", person1);
 
 bank.AddAccount(cAccount1);
 bank.AddAccount(cAccount2);    
