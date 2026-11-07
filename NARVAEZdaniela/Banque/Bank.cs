@@ -2,10 +2,10 @@ namespace Banque
 {
     public class Bank
     {
-        public Dictionary<string, Account> Accounts { get; private set; }= new Dictionary<string, Account>();
+        public Dictionary<string, IBankAccount> Accounts { get; private set; }= new Dictionary<string, IBankAccount>();
         public string Name { get; set; } = string.Empty;
 
-        public void AddAccount(Account account)
+        public void AddAccount(IBankAccount account)
         {
             if (Accounts.ContainsKey(account.Number))
             {
@@ -30,7 +30,7 @@ namespace Banque
             {
                 if (account.Owner == owner)
                 {
-                    totalBalance += account.GetBalance();
+                    totalBalance += account.Balance;
                 }
             }
             return totalBalance;

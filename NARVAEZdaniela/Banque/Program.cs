@@ -19,21 +19,21 @@ Person person2 = new Person
     BirthDate = new DateTime(2000, 10, 31)
 };
 
-CurrentAccount cAccount1 = new CurrentAccount
+IBankAccount cAccount1 = new CurrentAccount
 {
     Number = "B12345",
     Owner = person1,
     CreditLine = 500,
 };
 
-CurrentAccount cAccount2 = new CurrentAccount
+IBankAccount cAccount2 = new CurrentAccount
 {
     Number = "B67890",
     Owner = person2,
     CreditLine = 1000
 };
 
-SavingsAccount sAccount1 = new SavingsAccount
+IBankAccount sAccount1 = new SavingsAccount
 {
     Number = "B00125",
     Owner = person1,
