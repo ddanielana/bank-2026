@@ -17,6 +17,10 @@ namespace Banque
             Balance = initialBalance;
         }
 
+        public delegate void NegativeBalanceDelegate(Account account);
+
+        public event NegativeBalanceDelegate? NegativeBalanceEvent;
+
         public virtual void Deposit(double amount)
         {
             if (amount <= 0)
