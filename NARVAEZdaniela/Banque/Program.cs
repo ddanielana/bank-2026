@@ -94,3 +94,6 @@ cAccount3.Withdraw(50);
 
 Console.WriteLine("Retrait de 200 (solde -150) : alerte attendue");
 cAccount3.Withdraw(200);
+
+Console.WriteLine("test : solde neégatif via bank");
+cAccount2.Withdraw(700);

@@ -12,6 +12,11 @@ namespace Banque
                 throw new Exception("Le compte existe déjà");
             }
             Accounts.Add(account.Number, account);
+
+            if (account is Account a)
+            {
+                a.NegativeBalanceEvent += NegativeBalanceAction;
+            }
         }
 
         public void DeleteAccount(string number)
@@ -35,5 +40,11 @@ namespace Banque
             }
             return totalBalance;
         }
+
+        public void NegativeBalanceAction(Account account)
+        {
+            Console.WriteLine($"Le numéro de compte {account.Number} vient de passer en négatif.");
+        }
+
     }
 }
