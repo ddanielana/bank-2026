@@ -2,7 +2,14 @@ namespace Banque
 {
     public class CurrentAccount : Account
     {
-        public double CreditLine { get; set; }
+        private double _creditLine;
+        public double CreditLine { get => _creditLine; set {
+            if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(CreditLine), "La limite de credit ne doit pas être négatif");
+                }
+                _creditLine = value;
+            }}
 
         public CurrentAccount(string number, Person person) : base(number, person) { }
 
