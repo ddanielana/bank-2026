@@ -8,13 +8,9 @@ namespace Banque
 
         public CurrentAccount(string number, Person person, double initialBalance) : base (number, person, initialBalance) { }
 
-        public override void Withdraw(double amount)         //retirer de l'argent
-        {   
-            if (Balance + CreditLine < amount)
-            {
-               throw new Exception("Fonds insuffisants");
-            }
-            base.Withdraw(amount);
+        protected override bool CanWithdraw(double amount)
+        {
+            return amount <= Balance + CreditLine;
         }
 
         protected override double CalculInterets()

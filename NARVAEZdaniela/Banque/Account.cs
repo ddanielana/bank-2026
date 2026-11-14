@@ -21,7 +21,7 @@ namespace Banque
         {
             if (amount <= 0)
             {
-                throw new Exception("Le montant doit être positif");
+                throw new ArgumentOutOfRangeException(nameof(amount), "Le montant doit être positif");
             }
 
             Balance += amount;
@@ -31,9 +31,19 @@ namespace Banque
         {
             if (amount <= 0)
             {
-                throw new Exception("Le montant doit être positif");
+                throw new ArgumentOutOfRangeException(nameof(amount), "Le montant doit être positif");
+            }
+
+            if (!CanWithdraw(amount))
+            {
+                throw new InsufficientBalanceException("Fonds insuffisants");
             }
             Balance -= amount;
+        }
+
+        protected virtual bool CanWithdraw(double amount)
+        {
+            return amount <= Balance;
         }
 
         public double GetBalance()

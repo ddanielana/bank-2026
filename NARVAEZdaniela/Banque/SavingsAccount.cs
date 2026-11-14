@@ -10,12 +10,7 @@ namespace Banque
     
         public override void Withdraw(double amount)       
         {
-            if (amount > Balance)
-            {
-                throw new Exception("Fonds insuffisants");
-            }
             base.Withdraw(amount);
-
             DateLastWithdraw = DateTime.Now;
         }
 
