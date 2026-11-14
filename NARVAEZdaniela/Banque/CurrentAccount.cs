@@ -19,6 +19,15 @@ namespace Banque
         {
             return amount <= Balance + CreditLine;
         }
+        
+        public override void Withdraw(double amount)
+        {
+            base.Withdraw(amount);
+            if (Balance < 0)
+            {
+                OnNegativeBalance();
+            }
+        }
 
         protected override double CalculInterets()
         {

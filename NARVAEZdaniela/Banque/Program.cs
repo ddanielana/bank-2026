@@ -5,7 +5,7 @@ Bank bank = new Bank
     Name = "BelIng"
 };
 
-Person person1 = new Person("Deissy", "Narvaez", new DateTime(1995, 10, 29)); 
+Person person1 = new Person("Deissy", "Narvaez", new DateTime(1995, 10, 29));
 
 Person person2 = new Person("Daniela", "Pesantez", new DateTime(2000, 10, 31));
 
@@ -22,7 +22,7 @@ IBankAccount cAccount2 = new CurrentAccount("B67890", person2)
 IBankAccount sAccount1 = new SavingsAccount("B00125", person1);
 
 bank.AddAccount(cAccount1);
-bank.AddAccount(cAccount2);    
+bank.AddAccount(cAccount2);
 bank.AddAccount(sAccount1);
 
 cAccount1.Deposit(300);
@@ -73,3 +73,24 @@ catch (Exception x)
 {
     Console.WriteLine($"Error: {x.Message}");
 }
+
+Console.WriteLine("Test: Événement solde négatif");
+
+void AlerteSoldeNegatif(Account account)
+{
+    Console.WriteLine($"Le compte {account.Number} est passé en négatif ({account.Balance})");
+}
+
+CurrentAccount cAccount3 = new CurrentAccount("B14112", person2)
+{
+    CreditLine = 500
+};
+cAccount3.NegativeBalanceEvent += AlerteSoldeNegatif;
+
+cAccount3.Deposit(100);
+
+Console.WriteLine("Retrait de 50 (solde 50) : pas d'alerte attendue");
+cAccount3.Withdraw(50);
+
+Console.WriteLine("Retrait de 200 (solde -150) : alerte attendue");
+cAccount3.Withdraw(200);

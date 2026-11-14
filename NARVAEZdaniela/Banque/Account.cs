@@ -21,6 +21,11 @@ namespace Banque
 
         public event NegativeBalanceDelegate? NegativeBalanceEvent;
 
+        protected void OnNegativeBalance()
+        {
+            NegativeBalanceEvent?.Invoke(this);
+        }
+
         public virtual void Deposit(double amount)
         {
             if (amount <= 0)
